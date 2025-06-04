@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triết Lý Cuộc Sống</title>
+  <link rel="icon" type="png" href="image/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366F1;
+      --secondary: #EC4899;
+      --accent: #10B981;
+      --dark: #1F2937;
+      --light: #F9FAFB;
+      --text: #374151;
+      --card-bg: rgba(255, 255, 255, 0.95);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    .hero-section {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      z-index: -1;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 4rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .subtitle {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 4rem 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .rule-number {
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .rule-text {
+      font-size: 2.5rem;
+      color: var(--text);
+      line-height: 1.8;
+      font-family: 'Great Vibes', cursive;
+    }
+    .credit-section {
+      background: linear-gradient(135deg, var(--dark) 0%, #111827 100%);
+      color: white;
+      padding: 6rem 0;
+      margin-top: 4rem;
+      border-radius: 2rem 2rem 0 0;
+    }
+    .credit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .credit-category {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+    .credit-category::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 1.5rem;
+      background: var(--accent);
+    }
+    .credit-list { list-style: none; }
+    .credit-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+    .credit-list li:hover {
+      transform: translateX(10px);
+    }
+    
+    @media (max-width: 768px) {
+      .container { padding: 0 1rem; }
+      h1 { font-size: 2.5rem; }
+      .grid { grid-template-columns: 1fr; }
+      .credit-section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <div class="container">
+      <h1>Triết Lý Cuộc Sống</h1>
+      <p class="subtitle">Third edition - Online edition</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="grid">
+      
+    <div class="card">
+      <div class="rule-number">01</div>
+      <p class="rule-text">Không Tham Sân Si</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">02</div>
+      <p class="rule-text">Là người thì không thể tránh khỏi Sinh Lão Bệnh Tử</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">03</div>
+      <p class="rule-text">Không có gì là miễn phí</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">04</div>
+      <p class="rule-text">Làm gì cũng cần có thời gian</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">05</div>
+      <p class="rule-text">Sống thì phải bình đẳng</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">06</div>
+      <p class="rule-text">Không có gì là hoàn hảo</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">07</div>
+      <p class="rule-text">Cố gắng phát triển bản thân qua từng ngày</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">08</div>
+      <p class="rule-text">Mọi thứ đều có nhân quả</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">09</div>
+      <p class="rule-text">Hãy tha thứ và biết ơn nếu có thể</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">10</div>
+      <p class="rule-text">Tiền bạc chỉ là phù du</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">11</div>
+      <p class="rule-text">Tiền không mua được mọi thứ nhưng mua được hầu hết mọi thứ</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">12</div>
+      <p class="rule-text">Ôn hòa khi tức giận</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">13</div>
+      <p class="rule-text">Bình tĩnh, sáng suốt lúc gian nan</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">14</div>
+      <p class="rule-text">Nhà là nơi trở về lúc khó khăn</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">15</div>
+      <p class="rule-text">Không ăn hiếp nữ nhi</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">16</div>
+      <p class="rule-text">Không ăn hiếp nam nhân</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">17</div>
+      <p class="rule-text">Tình yêu đích thực chỉ xuất phát từ trái tim</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">18</div>
+      <p class="rule-text">Có duyên thì mới gặp nhau</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">19</div>
+      <p class="rule-text">Trong tình yêu thì tuổi tác không quan trọng</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">20</div>
+      <p class="rule-text">Đời nào chẳng phải trải qua khó khăn</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">21</div>
+      <p class="rule-text">Cuộc sống sẽ không bế tắc nếu bạn có niềm tin</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">22</div>
+      <p class="rule-text">Kiên trì, siêng năng, vượt khó</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">23</div>
+      <p class="rule-text">Kỷ luật bản thân là bàn đạp cho sự thành công</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">24</div>
+      <p class="rule-text">Số phận là do trời định sẵn, không thể thay đổi được</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">25</div>
+      <p class="rule-text">Tương lai là do mình quyết định</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">26</div>
+      <p class="rule-text">Thông minh có hạn nhưng thủ đoạn vô biên</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">27</div>
+      <p class="rule-text">Rộng lòng từ bi cho những người gặp khó khăn</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">28</div>
+      <p class="rule-text">Vừa có đức, có tài thì mới là người thành công</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">29</div>
+      <p class="rule-text">Cuộc sống thì không phải lúc nào cũng theo ý mình</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">30</div>
+      <p class="rule-text">Không làm người thứ ba trong cuộc tình đôi lứa</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">31</div>
+      <p class="rule-text">Không nghĩ về lợi ích của bản thân mà bỏ mặc người khác</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">32</div>
+      <p class="rule-text">Lúa chín cúi đầu</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">33</div>
+      <p class="rule-text">Cánh cửa này đóng thì cánh cửa khác sẽ mở ra</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">34</div>
+      <p class="rule-text">Những điều vui nào chẳng phải kết thúc</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">35</div>
+      <p class="rule-text">Thứ gì nhiều quá cũng không tốt</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">36</div>
+      <p class="rule-text">Sau cơn mưa thì mới có cầu vồng</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">37</div>
+      <p class="rule-text">Trong cuộc sống, có nhiều thứ hơn là sắc tướng và vật chất</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">38</div>
+      <p class="rule-text">Chú trọng vào hiện tại để phát triển bản thân thay vì đắm chìm vào quá khứ</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">39</div>
+      <p class="rule-text">Không có gì là vĩnh viễn</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">40</div>
+      <p class="rule-text">Hãy trân trọng từng giây của cuộc sống</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">41</div>
+      <p class="rule-text">Thế giới này không có bình đẳng, chỉ dựa vào sức lực của bản thân</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">42</div>
+      <p class="rule-text">Công bằng hơn bình đẳng</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">43</div>
+      <p class="rule-text">Không tà dâm</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">44</div>
+      <p class="rule-text">Đừng chỉ nói mà hãy hành động</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">45</div>
+      <p class="rule-text">Cong một chút cũng không sao</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">46</div>
+      <p class="rule-text">Thời gian không chờ một ai</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">47</div>
+      <p class="rule-text">Đôi khi tâm trí chúng ta cũng cần những cơn mưa</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">48</div>
+      <p class="rule-text">Đôi khi sai lầm là người thầy tốt nhất</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">49</div>
+      <p class="rule-text">Ngắt kết nối để tái kết nối</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">50</div>
+      <p class="rule-text">Không có nghề nghiệp nào là thấp kém</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">51</div>
+      <p class="rule-text">Ngày mai, cứ để mai lo. Ngày nào có cái khổ của ngày ấy</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">52</div>
+      <p class="rule-text">Có khi nhẫn để bình an</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">53</div>
+      <p class="rule-text">Có khi nhẫn để thênh thang cõi lòng</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">54</div>
+      <p class="rule-text">Đôi khi chúng ta cần phải hi sinh để giúp người khác</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">55</div>
+      <p class="rule-text">Đôi khi chúng ta cần thiết là tâm phải tĩnh</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">56</div>
+      <p class="rule-text">Quá khứ là hành trang của tương lai</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">57</div>
+      <p class="rule-text">Không tệ nạn</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">58</div>
+      <p class="rule-text">Hãy biết điều khiển 7 cảm xúc cơ bản của con người: hỷ, nộ, ái, ố, lạc, dục</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">59</div>
+      <p class="rule-text">Hãy vươn tay đón nhận tương lai</p>
+    </div>
+    
+    <div class="card">
+      <div class="rule-number">60</div>
+      <p class="rule-text">Tuổi thơ là thứ chỉ có một lần nên hãy trân trọng nó</p>
+    </div>
+    
+    </div>
+  </div>
+
+  <section class="credit-section">
+  <div class="container">
+    <div class="credit-grid">
+      <div>
+        <h3 class="credit-category">I. Tác Giả</h3>
+        <ul class="credit-list">
+          <li>Lưu Gia Quân</li>
+          <li>Cấn Trí Thành</li>
+          <li>Dương Đình Đăng Khoa</li>
+          <li>Trần Tuấn Kiệt</li>
+          <li>Đặng Phúc Nguyên Anh</li>
+          <li>Nguyễn Phùng Phúc Hiền</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="credit-category">II. Tham khảo</h3>
+        <ul class="credit-list">
+          <li>Báo phụ nữ 18/11/2024 (1 điều)</li>
+          <li>Mát-thêu 6,34 (1 điều)</li>
+          <li>Quạt (6 điều)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="credit-category">III. Làm trang web</h3>
+        <ul class="credit-list">
+          <li>Lưu Gia Quân</li>
+          <li>Đặng Phúc Nguyên Anh</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="donate" style="margin-top: 4rem;">
+      <h3 class="donate-title" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem;">Ủng Hộ</h3>
+      <p>Nếu các bạn thích web và mô hình thì hãy ủng hộ mình. Số tiền qua được ủng hộ sẽ được sử dụng để động viên cá nhân và làm vốn cho các dự án sau này.</p>
+      <p class="donate-type" style="margin-top: 1rem; font-weight: bold;">Tiền ảo:</p>
+      <ul class="credit-list">
+        <li>Bitcoin (BTC)</li>
+        <li>Ethereum (ETH)</li>
+        <li>Verus Coin (VRSC)</li>
+      </ul>
+      <p>Địa chỉ tài khoản: RUeKxumoDbnVMUeYcRWenDhsg3DhXdsgC4</p>
+      <p>Hoặc quét mã QR để sao chép địa chỉ tài khoản:</p>
+      <img src="image/qr code.png" alt="QR Code" width="200">
+      <p style="text-align: center; margin-top: 2rem;">&copy; 2025 Lưu Gia Quân</p>
+    </div>
+  </div>
+</section>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => observer.observe(card));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
