@@ -2,14 +2,16 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Language" content="vi, en, fr, zh">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Triết Lý Cuộc Sống</title>
+  <title data-i18n="title">Triết Lý Cuộc Sống</title>
   <link rel="icon" type="png" href="image/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #6366F1;
@@ -23,7 +25,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', 'Noto Sans SC', sans-serif;
       background: var(--light);
       color: var(--text);
       line-height: 1.6;
@@ -75,6 +77,8 @@
       border: 1px solid rgba(255,255,255,0.3);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      transform: translateY(20px);
     }
     .card:hover {
       transform: translateY(-5px);
@@ -139,20 +143,74 @@
     .credit-list li:hover {
       transform: translateX(10px);
     }
-    
+
+    /* Language switcher (fixed top-right) */
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 999px;
+      padding: 6px 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .lang-label {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-right: 6px;
+      padding: 0 6px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 50%;
+      transition: transform 0.12s ease, background 0.12s ease;
+      line-height: 1;
+    }
+    .lang-btn:hover, .lang-btn:focus {
+      transform: translateY(-3px);
+      background: rgba(99,102,241,0.08);
+      outline: none;
+    }
+    .lang-btn.active {
+      box-shadow: 0 6px 18px rgba(99,102,241,0.12);
+      background: rgba(99,102,241,0.12);
+    }
+
     @media (max-width: 768px) {
       .container { padding: 0 1rem; }
       h1 { font-size: 2.5rem; }
       .grid { grid-template-columns: 1fr; }
       .credit-section { padding: 4rem 0; }
+      .lang-label { display: none; }
+      .lang-switch { top: 10px; right: 10px; padding: 4px 6px; }
     }
   </style>
 </head>
 <body>
+  <!-- Language switcher (fixed) -->
+  <div class="lang-switch" role="navigation" aria-label="Language switcher">
+    <div class="lang-label" data-i18n="lang_label">🌐 Ngôn ngữ:</div>
+    <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt" title="Tiếng Việt">🇻🇳</button>
+    <button class="lang-btn" data-lang="en" aria-label="English" title="English">🇺🇸</button>
+    <button class="lang-btn" data-lang="fr" aria-label="Français" title="Français">🇫🇷</button>
+	<button class="lang-btn" data-lang="zh" aria-label="中文" title="中文">🇨🇳</button>
+  </div>
+
   <section class="hero-section">
     <div class="container">
-      <h1>Triết Lý Cuộc Sống</h1>
-      <p class="subtitle">Third edition - Online edition</p>
+      <h1 data-i18n="title">Triết Lý Cuộc Sống</h1>
+      <p class="subtitle" data-i18n="subtitle">Third edition - Online edition</p>
     </div>
   </section>
 
@@ -161,312 +219,312 @@
       
     <div class="card">
       <div class="rule-number">01</div>
-      <p class="rule-text">Không Tham Sân Si</p>
+      <p class="rule-text" data-i18n="rule_1">Không Tham Sân Si</p>
     </div>
     
     <div class="card">
       <div class="rule-number">02</div>
-      <p class="rule-text">Là người thì không thể tránh khỏi Sinh Lão Bệnh Tử</p>
+      <p class="rule-text" data-i18n="rule_2">Là người thì không thể tránh khỏi Sinh Lão Bệnh Tử</p>
     </div>
     
     <div class="card">
       <div class="rule-number">03</div>
-      <p class="rule-text">Không có gì là miễn phí</p>
+      <p class="rule-text" data-i18n="rule_3">Không có gì là miễn phí</p>
     </div>
     
     <div class="card">
       <div class="rule-number">04</div>
-      <p class="rule-text">Làm gì cũng cần có thời gian</p>
+      <p class="rule-text" data-i18n="rule_4">Làm gì cũng cần có thời gian</p>
     </div>
     
     <div class="card">
       <div class="rule-number">05</div>
-      <p class="rule-text">Sống thì phải bình đẳng</p>
+      <p class="rule-text" data-i18n="rule_5">Sống thì phải bình đẳng</p>
     </div>
     
     <div class="card">
       <div class="rule-number">06</div>
-      <p class="rule-text">Không có gì là hoàn hảo</p>
+      <p class="rule-text" data-i18n="rule_6">Không có gì là hoàn hảo</p>
     </div>
     
     <div class="card">
       <div class="rule-number">07</div>
-      <p class="rule-text">Cố gắng phát triển bản thân qua từng ngày</p>
+      <p class="rule-text" data-i18n="rule_7">Cố gắng phát triển bản thân qua từng ngày</p>
     </div>
     
     <div class="card">
       <div class="rule-number">08</div>
-      <p class="rule-text">Mọi thứ đều có nhân quả</p>
+      <p class="rule-text" data-i18n="rule_8">Mọi thứ đều có nhân quả</p>
     </div>
     
     <div class="card">
       <div class="rule-number">09</div>
-      <p class="rule-text">Hãy tha thứ và biết ơn nếu có thể</p>
+      <p class="rule-text" data-i18n="rule_9">Hãy tha thứ và biết ơn nếu có thể</p>
     </div>
     
     <div class="card">
       <div class="rule-number">10</div>
-      <p class="rule-text">Tiền bạc chỉ là phù du</p>
+      <p class="rule-text" data-i18n="rule_10">Tiền bạc chỉ là phù du</p>
     </div>
     
     <div class="card">
       <div class="rule-number">11</div>
-      <p class="rule-text">Tiền không mua được mọi thứ nhưng mua được hầu hết mọi thứ</p>
+      <p class="rule-text" data-i18n="rule_11">Tiền không mua được mọi thứ nhưng mua được hầu hết mọi thứ</p>
     </div>
     
     <div class="card">
       <div class="rule-number">12</div>
-      <p class="rule-text">Ôn hòa khi tức giận</p>
+      <p class="rule-text" data-i18n="rule_12">Ôn hòa khi tức giận</p>
     </div>
     
     <div class="card">
       <div class="rule-number">13</div>
-      <p class="rule-text">Bình tĩnh, sáng suốt lúc gian nan</p>
+      <p class="rule-text" data-i18n="rule_13">Bình tĩnh, sáng suốt lúc gian nan</p>
     </div>
     
     <div class="card">
       <div class="rule-number">14</div>
-      <p class="rule-text">Nhà là nơi trở về lúc khó khăn</p>
+      <p class="rule-text" data-i18n="rule_14">Nhà là nơi trở về lúc khó khăn</p>
     </div>
     
     <div class="card">
       <div class="rule-number">15</div>
-      <p class="rule-text">Không ăn hiếp nữ nhi</p>
+      <p class="rule-text" data-i18n="rule_15">Không ăn hiếp nữ nhi</p>
     </div>
     
     <div class="card">
       <div class="rule-number">16</div>
-      <p class="rule-text">Không ăn hiếp nam nhân</p>
+      <p class="rule-text" data-i18n="rule_16">Không ăn hiếp nam nhân</p>
     </div>
     
     <div class="card">
       <div class="rule-number">17</div>
-      <p class="rule-text">Tình yêu đích thực chỉ xuất phát từ trái tim</p>
+      <p class="rule-text" data-i18n="rule_17">Tình yêu đích thực chỉ xuất phát từ trái tim</p>
     </div>
     
     <div class="card">
       <div class="rule-number">18</div>
-      <p class="rule-text">Có duyên thì mới gặp nhau</p>
+      <p class="rule-text" data-i18n="rule_18">Có duyên thì mới gặp nhau</p>
     </div>
     
     <div class="card">
       <div class="rule-number">19</div>
-      <p class="rule-text">Trong tình yêu thì tuổi tác không quan trọng</p>
+      <p class="rule-text" data-i18n="rule_19">Trong tình yêu thì tuổi tác không quan trọng</p>
     </div>
     
     <div class="card">
       <div class="rule-number">20</div>
-      <p class="rule-text">Đời nào chẳng phải trải qua khó khăn</p>
+      <p class="rule-text" data-i18n="rule_20">Đời nào chẳng phải trải qua khó khăn</p>
     </div>
     
     <div class="card">
       <div class="rule-number">21</div>
-      <p class="rule-text">Cuộc sống sẽ không bế tắc nếu bạn có niềm tin</p>
+      <p class="rule-text" data-i18n="rule_21">Cuộc sống sẽ không bế tắc nếu bạn có niềm tin</p>
     </div>
     
     <div class="card">
       <div class="rule-number">22</div>
-      <p class="rule-text">Kiên trì, siêng năng, vượt khó</p>
+      <p class="rule-text" data-i18n="rule_22">Kiên trì, siêng năng, vượt khó</p>
     </div>
     
     <div class="card">
       <div class="rule-number">23</div>
-      <p class="rule-text">Kỷ luật bản thân là bàn đạp cho sự thành công</p>
+      <p class="rule-text" data-i18n="rule_23">Kỷ luật bản thân là bàn đạp cho sự thành công</p>
     </div>
     
     <div class="card">
       <div class="rule-number">24</div>
-      <p class="rule-text">Số phận là do trời định sẵn, không thể thay đổi được</p>
+      <p class="rule-text" data-i18n="rule_24">Số phận là do trời định sẵn, không thể thay đổi được</p>
     </div>
     
     <div class="card">
       <div class="rule-number">25</div>
-      <p class="rule-text">Tương lai là do mình quyết định</p>
+      <p class="rule-text" data-i18n="rule_25">Tương lai là do mình quyết định</p>
     </div>
     
     <div class="card">
       <div class="rule-number">26</div>
-      <p class="rule-text">Thông minh có hạn nhưng thủ đoạn vô biên</p>
+      <p class="rule-text" data-i18n="rule_26">Thông minh có hạn nhưng thủ đoạn vô biên</p>
     </div>
     
     <div class="card">
       <div class="rule-number">27</div>
-      <p class="rule-text">Rộng lòng từ bi cho những người gặp khó khăn</p>
+      <p class="rule-text" data-i18n="rule_27">Rộng lòng từ bi cho những người gặp khó khăn</p>
     </div>
     
     <div class="card">
       <div class="rule-number">28</div>
-      <p class="rule-text">Vừa có đức, có tài thì mới là người thành công</p>
+      <p class="rule-text" data-i18n="rule_28">Vừa có đức, có tài thì mới là người thành công</p>
     </div>
     
     <div class="card">
       <div class="rule-number">29</div>
-      <p class="rule-text">Cuộc sống thì không phải lúc nào cũng theo ý mình</p>
+      <p class="rule-text" data-i18n="rule_29">Cuộc sống thì không phải lúc nào cũng theo ý mình</p>
     </div>
     
     <div class="card">
       <div class="rule-number">30</div>
-      <p class="rule-text">Không làm người thứ ba trong cuộc tình đôi lứa</p>
+      <p class="rule-text" data-i18n="rule_30">Không làm người thứ ba trong cuộc tình đôi lứa</p>
     </div>
     
     <div class="card">
       <div class="rule-number">31</div>
-      <p class="rule-text">Không nghĩ về lợi ích của bản thân mà bỏ mặc người khác</p>
+      <p class="rule-text" data-i18n="rule_31">Không nghĩ về lợi ích của bản thân mà bỏ mặc người khác</p>
     </div>
     
     <div class="card">
       <div class="rule-number">32</div>
-      <p class="rule-text">Lúa chín cúi đầu</p>
+      <p class="rule-text" data-i18n="rule_32">Lúa chín cúi đầu</p>
     </div>
     
     <div class="card">
       <div class="rule-number">33</div>
-      <p class="rule-text">Cánh cửa này đóng thì cánh cửa khác sẽ mở ra</p>
+      <p class="rule-text" data-i18n="rule_33">Cánh cửa này đóng thì cánh cửa khác sẽ mở ra</p>
     </div>
     
     <div class="card">
       <div class="rule-number">34</div>
-      <p class="rule-text">Những điều vui nào chẳng phải kết thúc</p>
+      <p class="rule-text" data-i18n="rule_34">Những điều vui nào chẳng phải kết thúc</p>
     </div>
     
     <div class="card">
       <div class="rule-number">35</div>
-      <p class="rule-text">Thứ gì nhiều quá cũng không tốt</p>
+      <p class="rule-text" data-i18n="rule_35">Thứ gì nhiều quá cũng không tốt</p>
     </div>
     
     <div class="card">
       <div class="rule-number">36</div>
-      <p class="rule-text">Sau cơn mưa thì mới có cầu vồng</p>
+      <p class="rule-text" data-i18n="rule_36">Sau cơn mưa thì mới có cầu vồng</p>
     </div>
     
     <div class="card">
       <div class="rule-number">37</div>
-      <p class="rule-text">Trong cuộc sống, có nhiều thứ hơn là sắc tướng và vật chất</p>
+      <p class="rule-text" data-i18n="rule_37">Trong cuộc sống, có nhiều thứ hơn là sắc tướng và vật chất</p>
     </div>
     
     <div class="card">
       <div class="rule-number">38</div>
-      <p class="rule-text">Chú trọng vào hiện tại để phát triển bản thân thay vì đắm chìm vào quá khứ</p>
+      <p class="rule-text" data-i18n="rule_38">Chú trọng vào hiện tại để phát triển bản thân thay vì đắm chìm vào quá khứ</p>
     </div>
     
     <div class="card">
       <div class="rule-number">39</div>
-      <p class="rule-text">Không có gì là vĩnh viễn</p>
+      <p class="rule-text" data-i18n="rule_39">Không có gì là vĩnh viễn</p>
     </div>
     
     <div class="card">
       <div class="rule-number">40</div>
-      <p class="rule-text">Hãy trân trọng từng giây của cuộc sống</p>
+      <p class="rule-text" data-i18n="rule_40">Hãy trân trọng từng giây của cuộc sống</p>
     </div>
     
     <div class="card">
       <div class="rule-number">41</div>
-      <p class="rule-text">Thế giới này không có bình đẳng, chỉ dựa vào sức lực của bản thân</p>
+      <p class="rule-text" data-i18n="rule_41">Thế giới này không có bình đẳng, chỉ dựa vào sức lực của bản thân</p>
     </div>
     
     <div class="card">
       <div class="rule-number">42</div>
-      <p class="rule-text">Công bằng hơn bình đẳng</p>
+      <p class="rule-text" data-i18n="rule_42">Công bằng hơn bình đẳng</p>
     </div>
     
     <div class="card">
       <div class="rule-number">43</div>
-      <p class="rule-text">Không tà dâm</p>
+      <p class="rule-text" data-i18n="rule_43">Không tà dâm</p>
     </div>
     
     <div class="card">
       <div class="rule-number">44</div>
-      <p class="rule-text">Đừng chỉ nói mà hãy hành động</p>
+      <p class="rule-text" data-i18n="rule_44">Đừng chỉ nói mà hãy hành động</p>
     </div>
     
     <div class="card">
       <div class="rule-number">45</div>
-      <p class="rule-text">Cong một chút cũng không sao</p>
+      <p class="rule-text" data-i18n="rule_45">Cong một chút cũng không sao</p>
     </div>
     
     <div class="card">
       <div class="rule-number">46</div>
-      <p class="rule-text">Thời gian không chờ một ai</p>
+      <p class="rule-text" data-i18n="rule_46">Thời gian không chờ một ai</p>
     </div>
     
     <div class="card">
       <div class="rule-number">47</div>
-      <p class="rule-text">Đôi khi tâm trí chúng ta cũng cần những cơn mưa</p>
+      <p class="rule-text" data-i18n="rule_47">Đôi khi tâm trí chúng ta cũng cần những cơn mưa</p>
     </div>
     
     <div class="card">
       <div class="rule-number">48</div>
-      <p class="rule-text">Đôi khi sai lầm là người thầy tốt nhất</p>
+      <p class="rule-text" data-i18n="rule_48">Đôi khi sai lầm là người thầy tốt nhất</p>
     </div>
     
     <div class="card">
       <div class="rule-number">49</div>
-      <p class="rule-text">Ngắt kết nối để tái kết nối</p>
+      <p class="rule-text" data-i18n="rule_49">Ngắt kết nối để tái kết nối</p>
     </div>
     
     <div class="card">
       <div class="rule-number">50</div>
-      <p class="rule-text">Không có nghề nghiệp nào là thấp kém</p>
+      <p class="rule-text" data-i18n="rule_50">Không có nghề nghiệp nào là thấp kém</p>
     </div>
     
     <div class="card">
       <div class="rule-number">51</div>
-      <p class="rule-text">Ngày mai, cứ để mai lo. Ngày nào có cái khổ của ngày ấy</p>
+      <p class="rule-text" data-i18n="rule_51">Ngày mai, cứ để mai lo. Ngày nào có cái khổ của ngày ấy</p>
     </div>
     
     <div class="card">
       <div class="rule-number">52</div>
-      <p class="rule-text">Có khi nhẫn để bình an</p>
+      <p class="rule-text" data-i18n="rule_52">Có khi nhẫn để bình an</p>
     </div>
     
     <div class="card">
       <div class="rule-number">53</div>
-      <p class="rule-text">Có khi nhẫn để thênh thang cõi lòng</p>
+      <p class="rule-text" data-i18n="rule_53">Có khi nhẫn để thênh thang cõi lòng</p>
     </div>
     
     <div class="card">
       <div class="rule-number">54</div>
-      <p class="rule-text">Đôi khi chúng ta cần phải hi sinh để giúp người khác</p>
+      <p class="rule-text" data-i18n="rule_54">Đôi khi chúng ta cần phải hi sinh để giúp người khác</p>
     </div>
     
     <div class="card">
       <div class="rule-number">55</div>
-      <p class="rule-text">Đôi khi chúng ta cần thiết là tâm phải tĩnh</p>
+      <p class="rule-text" data-i18n="rule_55">Đôi khi chúng ta cần thiết là tâm phải tĩnh</p>
     </div>
     
     <div class="card">
       <div class="rule-number">56</div>
-      <p class="rule-text">Quá khứ là hành trang của tương lai</p>
+      <p class="rule-text" data-i18n="rule_56">Quá khứ là hành trang của tương lai</p>
     </div>
     
     <div class="card">
       <div class="rule-number">57</div>
-      <p class="rule-text">Không tệ nạn</p>
+      <p class="rule-text" data-i18n="rule_57">Không tệ nạn</p>
     </div>
     
     <div class="card">
       <div class="rule-number">58</div>
-      <p class="rule-text">Hãy biết điều khiển 7 cảm xúc cơ bản của con người: hỷ, nộ, ái, ố, lạc, dục</p>
+      <p class="rule-text" data-i18n="rule_58">Hãy biết điều khiển 7 cảm xúc cơ bản của con người: hỷ, nộ, ái, ố, lạc, dục</p>
     </div>
     
     <div class="card">
       <div class="rule-number">59</div>
-      <p class="rule-text">Hãy vươn tay đón nhận tương lai</p>
+      <p class="rule-text" data-i18n="rule_59">Hãy vươn tay đón nhận tương lai</p>
     </div>
     
     <div class="card">
       <div class="rule-number">60</div>
-      <p class="rule-text">Tuổi thơ là thứ chỉ có một lần nên hãy trân trọng nó</p>
+      <p class="rule-text" data-i18n="rule_60">Tuổi thơ là thứ chỉ có một lần nên hãy trân trọng nó</p>
     </div>
 
     <div class="card">
       <div class="rule-number">61</div>
-      <p class="rule-text">Thay vì chạy theo những bề bộn bên ngoài, sao ta không tự quan tâm bản thân hơn?</p>
+      <p class="rule-text" data-i18n="rule_61">Thay vì chạy theo những bề bộn bên ngoài, sao ta không tự quan tâm bản thân hơn?</p>
     </div>
 
     <div class="card">
       <div class="rule-number">62</div>
-      <p class="rule-text">Điểm số không nói lên tất cả</p>
+      <p class="rule-text" data-i18n="rule_62">Điểm số không nói lên tất cả</p>
     </div>
     
     </div>
@@ -476,49 +534,49 @@
   <div class="container">
     <div class="credit-grid">
       <div>
-        <h3 class="credit-category">I. Tác Giả</h3>
+        <h3 class="credit-category" data-i18n="credit_authors_heading">I. Tác Giả</h3>
         <ul class="credit-list">
-          <li>Lưu Gia Quân</li>
-          <li>Cấn Trí Thành</li>
-          <li>Đặng Phúc Nguyên Anh</li>
-          <li>Dương Đình Đăng Khoa</li>
-          <li>Nguyễn Minh Tiến</li>
-          <li>Trần Tuấn Kiệt</li>
-          <li>Nguyễn Phùng Phúc Hiền</li>
-          <li>Lê Quang Vinh</li>
+          <li data-i18n="author_1">Lưu Gia Quân</li>
+          <li data-i18n="author_2">Cấn Trí Thành</li>
+          <li data-i18n="author_3">Đặng Phúc Nguyên Anh</li>
+          <li data-i18n="author_4">Dương Đình Đăng Khoa</li>
+          <li data-i18n="author_5">Nguyễn Minh Tiến</li>
+          <li data-i18n="author_6">Trần Tuấn Kiệt</li>
+          <li data-i18n="author_7">Nguyễn Phùng Phúc Hiền</li>
+          <li data-i18n="author_8">Lê Quang Vinh</li>
         </ul>
       </div>
 
       <div>
-        <h3 class="credit-category">II. Tham khảo</h3>
+        <h3 class="credit-category" data-i18n="credit_refs_heading">II. Tham khảo</h3>
         <ul class="credit-list">
-          <li>Báo phụ nữ 18/11/2024 (1 điều)</li>
-          <li>Mát-thêu 6,34 (1 điều)</li>
-          <li>Quạt (6 điều)</li>
+          <li data-i18n="ref_1">Báo phụ nữ 18/11/2024 (1 điều)</li>
+          <li data-i18n="ref_2">Mát-thêu 6,34 (1 điều)</li>
+          <li data-i18n="ref_3">Quạt (6 điều)</li>
         </ul>
       </div>
 
       <div>
-        <h3 class="credit-category">III. Làm trang web</h3>
+        <h3 class="credit-category" data-i18n="credit_site_heading">III. Làm trang web</h3>
         <ul class="credit-list">
-          <li>Lưu Gia Quân</li>
+          <li data-i18n="web_by">Lưu Gia Quân</li>
         </ul>
       </div>
     </div>
 
     <div class="donate" style="margin-top: 4rem;">
-      <h3 class="donate-title" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem;">Ủng Hộ</h3>
-      <p>Nếu các bạn thích web và mô hình thì hãy ủng hộ mình. Số tiền qua được ủng hộ sẽ được sử dụng để động viên cá nhân và làm vốn cho các dự án sau này.</p>
-      <p class="donate-type" style="margin-top: 1rem; font-weight: bold;">Tiền ảo:</p>
+      <h3 class="donate-title" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem;" data-i18n="donate_title">Ủng Hộ</h3>
+      <p data-i18n="donate_desc">Nếu các bạn thích web và mô hình thì hãy ủng hộ mình. Số tiền qua được ủng hộ sẽ được sử dụng để động viên cá nhân và làm vốn cho các dự án sau này.</p>
+      <p class="donate-type" style="margin-top: 1rem; font-weight: bold;" data-i18n="donate_type">Tiền ảo:</p>
       <ul class="credit-list">
-        <li>Bitcoin (BTC)</li>
-        <li>Ethereum (ETH)</li>
-        <li>Verus Coin (VRSC)</li>
+        <li data-i18n="crypto_btc">Bitcoin (BTC)</li>
+        <li data-i18n="crypto_eth">Ethereum (ETH)</li>
+        <li data-i18n="crypto_vrsc">Verus Coin (VRSC)</li>
       </ul>
-      <p>Địa chỉ tài khoản: RUeKxumoDbnVMUeYcRWenDhsg3DhXdsgC4</p>
-      <p>Hoặc quét mã QR để sao chép địa chỉ tài khoản:</p>
-      <img src="image/qr code.png" alt="QR Code" width="200">
-      <p style="text-align: center; margin-top: 2rem;">&copy; 2025 Lưu Gia Quân</p>
+      <p data-i18n="account_label">Địa chỉ tài khoản: <span style="font-family: monospace;">RUeKxumoDbnVMUeYcRWenDhsg3DhXdsgC4</span></p>
+      <p data-i18n="qr_label">Hoặc quét mã QR để sao chép địa chỉ tài khoản:</p>
+      <img src="image/qr code.png" alt="QR Code" width="200" data-i18n-alt="qr_alt">
+      <p style="text-align: center; margin-top: 2rem;" data-i18n="copyright">&copy; 2025 Lưu Gia Quân</p>
     </div>
   </div>
 </section>
@@ -545,5 +603,148 @@
       });
     });
   </script>
+  
+  <!-- Scroll / Navigation Buttons -->
+  <div id="floating-buttons">
+    <button id="scrollTopBtn" title="Lên đầu" data-i18n-title="scroll_top_title"><i class="fas fa-arrow-up"></i></button>
+    <button id="gotoRuleBtn" title="Đến điều" data-i18n-title="goto_rule_title"><i class="fas fa-location-arrow"></i></button>
+    <button id="randomRuleBtn" title="Ngẫu nhiên" data-i18n-title="random_rule_title"><i class="fas fa-random"></i></button>
+  </div>
+
+  <style>
+    #floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+    #floating-buttons button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    #floating-buttons button:hover {
+      background: var(--accent);
+      transform: scale(1.1);
+    }
+  </style>
+
+  <script>
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    const gotoRuleBtn = document.getElementById('gotoRuleBtn');
+    const randomRuleBtn = document.getElementById('randomRuleBtn');
+
+    // --- Scroll to top fade logic ---
+    scrollTopBtn.style.opacity = '0';
+    scrollTopBtn.style.pointerEvents = 'none';
+    scrollTopBtn.style.transition = 'opacity 0.3s ease';
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.pointerEvents = 'auto';
+      } else {
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.pointerEvents = 'none';
+      }
+    });
+
+    // Scroll to top
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Highlight animation for a rule ---
+    function highlightRule(ruleCard) {
+      const circle = ruleCard.querySelector('.rule-number');
+      if (!circle) return;
+
+      const originalColor = getComputedStyle(circle).backgroundColor;
+
+      // change color + glow
+      circle.style.background = 'var(--secondary)';
+      ruleCard.style.boxShadow = '0 0 25px rgba(236,72,153,0.6)';
+
+      // restore after 1.5s
+      setTimeout(() => {
+        circle.style.background = originalColor;
+        ruleCard.style.boxShadow = '';
+      }, 1500);
+    }
+
+    // --- Go to specific rule ---
+    gotoRuleBtn.addEventListener('click', () => {
+      const ruleNumber = prompt("Nhập số thứ tự của điều muốn đến (1–62):");
+      const ruleCard = [...document.querySelectorAll('.card')].find(card =>
+        card.querySelector('.rule-number').textContent === ruleNumber.padStart(2, '0')
+      );
+
+      if (ruleCard) {
+        ruleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        highlightRule(ruleCard);
+      } else {
+        alert("Số thứ tự đã nhập không hợp lệ!");
+      }
+    });
+
+    // --- Go to random rule ---
+    randomRuleBtn.addEventListener('click', () => {
+      const cards = document.querySelectorAll('.card');
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      const ruleCard = cards[randomIndex];
+      ruleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      highlightRule(ruleCard);
+    });
+  </script>
+
+  <!-- Lang JS: (file lang.js sẽ được gửi kèm) -->
+  <script src="lang.js" defer></script>
+
+  <!-- Init language buttons and behavior (deferred so lang.js loads first) -->
+  <script defer>
+    // Attach language button listeners and initialize active state.
+    document.addEventListener('DOMContentLoaded', () => {
+      const langButtons = document.querySelectorAll('.lang-btn');
+
+      function setActiveButton(lang) {
+        langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
+      }
+
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          if (window.setLanguage) {
+            window.setLanguage(lang);
+          } else {
+            // if lang.js not loaded yet, store preference and let lang.js pick it up
+            try { localStorage.setItem('site_lang', lang); } catch (e) {}
+          }
+          setActiveButton(lang);
+        });
+      });
+
+      // If lang.js exposes an init function, call it (it should set language from localStorage or default)
+      if (window.initI18n) {
+        window.initI18n();
+        // set active based on current language (if lang.js exposes currentLang)
+        if (window.currentLang) setActiveButton(window.currentLang);
+      } else {
+        // fallback: highlight saved lang (if any)
+        const saved = localStorage.getItem('site_lang') || 'vi';
+        setActiveButton(saved);
+      }
+    });
+  </script>
+
 </body>
 </html>
