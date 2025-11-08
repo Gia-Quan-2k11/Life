@@ -198,14 +198,73 @@
   </style>
 </head>
 <body>
-  <!-- Language switcher (fixed) -->
-  <div class="lang-switch" role="navigation" aria-label="Language switcher">
-    <div class="lang-label" data-i18n="lang_label">🌐 Ngôn ngữ:</div>
-    <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt" title="Tiếng Việt">🇻🇳</button>
-    <button class="lang-btn" data-lang="en" aria-label="English" title="English">🇺🇸</button>
-    <button class="lang-btn" data-lang="fr" aria-label="Français" title="Français">🇫🇷</button>
-	<button class="lang-btn" data-lang="zh" aria-label="中文" title="中文">🇨🇳</button>
+  <!-- 🌐 Floating Globe Language Switch (replace old globe HTML) -->
+<div class="lang-globe" id="langMenu">
+  <button id="globeBtn" aria-haspopup="true" aria-expanded="false" title="Change language">🌐</button>
+  <div class="lang-dropdown" id="langDropdown" role="menu" aria-hidden="true">
+    <button class="lang-option" data-lang="vi" role="menuitem">🇻🇳 Tiếng Việt</button>
+    <button class="lang-option" data-lang="en" role="menuitem">🇺🇸 English</button>
+    <button class="lang-option" data-lang="fr" role="menuitem">🇫🇷 Français</button>
+    <button class="lang-option" data-lang="zh" role="menuitem">🇨🇳 中文</button>
   </div>
+</div>
+
+<style>
+  .lang-globe {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+  }
+  #globeBtn {
+    font-size: 1.6rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    transition: transform .18s ease, background .18s ease;
+  }
+  #globeBtn:hover { transform: rotate(8deg); }
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    flex-direction: column;
+    min-width: 150px;
+  }
+  .lang-dropdown.show {
+    display: flex;
+  }
+  .lang-option {
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.98rem;
+    color: var(--text);
+    transition: background .12s ease;
+  }
+  .lang-option:hover { background: rgba(99,102,241,0.06); }
+  .lang-option.active {
+    background: rgba(99,102,241,0.12);
+    box-shadow: inset 0 2px 0 rgba(99,102,241,0.06);
+  }
+
+  /* small device tweak */
+  @media (max-width:480px){
+    .lang-dropdown { right: -8px; min-width: 140px; }
+  }
+</style>
 
   <section class="hero-section">
     <div class="container">
@@ -639,112 +698,150 @@
     }
   </style>
 
-  <script>
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    const gotoRuleBtn = document.getElementById('gotoRuleBtn');
-    const randomRuleBtn = document.getElementById('randomRuleBtn');
+<script>
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  const gotoRuleBtn = document.getElementById('gotoRuleBtn');
+  const randomRuleBtn = document.getElementById('randomRuleBtn');
 
-    // --- Scroll to top fade logic ---
-    scrollTopBtn.style.opacity = '0';
-    scrollTopBtn.style.pointerEvents = 'none';
-    scrollTopBtn.style.transition = 'opacity 0.3s ease';
+  // --- Scroll to top fade logic ---
+  scrollTopBtn.style.opacity = '0';
+  scrollTopBtn.style.pointerEvents = 'none';
+  scrollTopBtn.style.transition = 'opacity 0.3s ease';
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.opacity = '1';
-        scrollTopBtn.style.pointerEvents = 'auto';
-      } else {
-        scrollTopBtn.style.opacity = '0';
-        scrollTopBtn.style.pointerEvents = 'none';
-      }
-    });
-
-    // Scroll to top
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // --- Highlight animation for a rule ---
-    function highlightRule(ruleCard) {
-      const circle = ruleCard.querySelector('.rule-number');
-      if (!circle) return;
-
-      const originalColor = getComputedStyle(circle).backgroundColor;
-
-      // change color + glow
-      circle.style.background = 'var(--secondary)';
-      ruleCard.style.boxShadow = '0 0 25px rgba(236,72,153,0.6)';
-
-      // restore after 1.5s
-      setTimeout(() => {
-        circle.style.background = originalColor;
-        ruleCard.style.boxShadow = '';
-      }, 1500);
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.opacity = '1';
+      scrollTopBtn.style.pointerEvents = 'auto';
+    } else {
+      scrollTopBtn.style.opacity = '0';
+      scrollTopBtn.style.pointerEvents = 'none';
     }
+  });
 
-    // --- Go to specific rule ---
-    gotoRuleBtn.addEventListener('click', () => {
-      const ruleNumber = prompt("Nhập số thứ tự của điều muốn đến (1–62):");
-      const ruleCard = [...document.querySelectorAll('.card')].find(card =>
-        card.querySelector('.rule-number').textContent === ruleNumber.padStart(2, '0')
-      );
+  // Scroll to top
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-      if (ruleCard) {
-        ruleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        highlightRule(ruleCard);
-      } else {
-        alert("Số thứ tự đã nhập không hợp lệ!");
-      }
-    });
+  // --- Highlight animation for a rule ---
+  function highlightRule(ruleCard) {
+    const circle = ruleCard.querySelector('.rule-number');
+    if (!circle) return;
+    const originalColor = getComputedStyle(circle).backgroundColor;
+    circle.style.background = 'var(--secondary)';
+    ruleCard.style.boxShadow = '0 0 25px rgba(236,72,153,0.6)';
+    setTimeout(() => {
+      circle.style.background = originalColor;
+      ruleCard.style.boxShadow = '';
+    }, 1500);
+  }
 
-    // --- Go to random rule ---
-    randomRuleBtn.addEventListener('click', () => {
-      const cards = document.querySelectorAll('.card');
-      const randomIndex = Math.floor(Math.random() * cards.length);
-      const ruleCard = cards[randomIndex];
+  // --- Ngôn ngữ cho prompt và alert ---
+  const langPrompts = {
+    vi: { prompt: "Nhập số thứ tự của điều muốn đến (1–62):", invalid: "Số thứ tự đã nhập không hợp lệ!" },
+    en: { prompt: "Enter the rule number to go to (1–62):", invalid: "Invalid rule number!" },
+    fr: { prompt: "Entrez le numéro de la règle à atteindre (1–62) :", invalid: "Numéro de règle invalide !" },
+    zh: { prompt: "请输入要跳转的规则编号（1–62）：", invalid: "无效的规则编号！" }
+  };
+
+  function getLangPrompt(type) {
+    const lang = window.currentLang || 'vi';
+    return langPrompts[lang][type];
+  }
+
+  // --- Go to specific rule ---
+  gotoRuleBtn.addEventListener('click', () => {
+    const ruleNumber = prompt(getLangPrompt('prompt'));
+    if (!ruleNumber) return;
+
+    const ruleCard = [...document.querySelectorAll('.card')].find(card =>
+      card.querySelector('.rule-number').textContent === ruleNumber.padStart(2, '0')
+    );
+
+    if (ruleCard) {
       ruleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       highlightRule(ruleCard);
-    });
-  </script>
+    } else {
+      alert(getLangPrompt('invalid'));
+    }
+  });
+
+  // --- Go to random rule ---
+  randomRuleBtn.addEventListener('click', () => {
+    const cards = document.querySelectorAll('.card');
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    const ruleCard = cards[randomIndex];
+    ruleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    highlightRule(ruleCard);
+  });
+</script>
 
   <!-- Lang JS: (file lang.js sẽ được gửi kèm) -->
   <script src="lang.js" defer></script>
 
-  <!-- Init language buttons and behavior (deferred so lang.js loads first) -->
-  <script defer>
-    // Attach language button listeners and initialize active state.
-    document.addEventListener('DOMContentLoaded', () => {
-      const langButtons = document.querySelectorAll('.lang-btn');
+  <!-- 🌐 Globe language switcher -->
+<script defer>
+document.addEventListener('DOMContentLoaded', () => {
+  const globeBtn = document.getElementById('globeBtn');
+  const dropdown = document.getElementById('langDropdown');
+  const options = document.querySelectorAll('.lang-option');
 
-      function setActiveButton(lang) {
-        langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
-      }
+  // Toggle dropdown on globe click (also supports keyboard)
+  function openDropdown() {
+    dropdown.classList.add('show');
+    globeBtn.setAttribute('aria-expanded','true');
+    dropdown.setAttribute('aria-hidden','false');
+  }
+  function closeDropdown() {
+    dropdown.classList.remove('show');
+    globeBtn.setAttribute('aria-expanded','false');
+    dropdown.setAttribute('aria-hidden','true');
+  }
+  globeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (dropdown.classList.contains('show')) closeDropdown();
+    else openDropdown();
+  });
 
-      langButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-lang');
-          if (window.setLanguage) {
-            window.setLanguage(lang);
-          } else {
-            // if lang.js not loaded yet, store preference and let lang.js pick it up
-            try { localStorage.setItem('site_lang', lang); } catch (e) {}
-          }
-          setActiveButton(lang);
-        });
-      });
+  // Click an option: change lang and reflect active
+  function updateActive(lang) {
+    options.forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === lang));
+  }
+  function updateGlobeLabel(lang) {
+    const flag = { vi: '🇻🇳', en: '🇺🇸', fr: '🇫🇷', zh: '🇨🇳' }[lang] || '🌐';
+    globeBtn.textContent = flag;
+  }
 
-      // If lang.js exposes an init function, call it (it should set language from localStorage or default)
-      if (window.initI18n) {
-        window.initI18n();
-        // set active based on current language (if lang.js exposes currentLang)
-        if (window.currentLang) setActiveButton(window.currentLang);
-      } else {
-        // fallback: highlight saved lang (if any)
-        const saved = localStorage.getItem('site_lang') || 'vi';
-        setActiveButton(saved);
-      }
+  options.forEach(opt => {
+    opt.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const lang = opt.getAttribute('data-lang');
+      if (window.setLanguage) window.setLanguage(lang);   // call your lang.js setter
+      updateActive(lang);
+      updateGlobeLabel(lang);
+      closeDropdown();
     });
-  </script>
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target) && e.target !== globeBtn) closeDropdown();
+  });
+
+  // Close on Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDropdown();
+  });
+
+  // After lang.js initializes, sync UI
+  // Wait a tick for lang.js to run (lang.js is loaded with defer)
+  setTimeout(() => {
+    const lang = window.currentLang || localStorage.getItem('site_lang') || 'vi';
+    updateActive(lang);
+    updateGlobeLabel(lang);
+  }, 80);
+});
+</script>
 
 </body>
 </html>

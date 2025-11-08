@@ -416,7 +416,7 @@ function initI18n() {
   currentLang = saved || 'vi';
   updateTexts();
   // kích hoạt nút tương ứng
-  const buttons = document.querySelectorAll('.lang-btn');
+  const buttons = document.querySelectorAll('.lang-option');
   buttons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang));
   window.currentLang = currentLang;
 }
